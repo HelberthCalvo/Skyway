@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{ titulo }}</span>
+                    <form class="mt-3" [formGroup]="scheduleForm" (ngSubmit)="addSchedule()">
+                        <div class="mb-3">
+                            <input type="date" formControlName="day" class="form-control form-control-lg"
+                                placeholder="Día">
+                            <div class="text-danger" *ngIf="scheduleForm.get('day')?.hasError('required') && scheduleForm.get('day')?.touched">
+                                <span>El día <strong>es obligadorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="time" formControlName="arrivedhour" class="form-control form-control-lg"
+                                placeholder="Hora de llegada">
+                            <div class="text-danger" *ngIf="scheduleForm.get('arrivedhour')?.hasError('required') && scheduleForm.get('arrivedhour')?.touched">
+                                <span>La hora de llegada <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="price" class="form-control form-control-lg"
+                                placeholder="Precio">
+                            <div class="text-danger" *ngIf="scheduleForm.get('price')?.hasError('required') && scheduleForm.get('price')?.touched">
+                                <span>El precio <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/list-schedule" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="scheduleForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

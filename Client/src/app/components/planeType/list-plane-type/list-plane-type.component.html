@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Tipos de Aviones</span>
+                    <button class="btn btn-success float-end" routerLink="/create-planeType">NUEVO</button>
+                    <table *ngIf="planeTypes.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Año</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Cantidad de pasajeros</th>
+                            <th scope="col">Cantidad de filas</th>
+                            <th scope="col">Cantidad de asientos</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let planeType of planeTypes">
+                            <td>{{planeType.year}}</td>
+                            <td>{{planeType.model}}</td>
+                            <td>{{planeType.brand}}</td>
+                            <td>{{planeType.qtypassengers}}</td>
+                            <td>{{planeType.qtyrows}}</td>
+                            <td>{{planeType.qtyseats}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-planeType', planeType._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deletePlaneType(planeType._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="planeTypes.length == 0">No hay tipos de aviones para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

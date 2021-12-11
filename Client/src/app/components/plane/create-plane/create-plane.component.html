@@ -1,0 +1,111 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">{{ titulo }}</span>
+          <form class="mt-3" [formGroup]="planeForm" (ngSubmit)="addPlane()">
+            <div class="mb-3">
+              <input
+                type="text"
+                formControlName="descrip"
+                class="form-control form-control-lg"
+                placeholder="Descripción"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  planeForm.get('descrip')?.hasError('required') &&
+                  planeForm.get('descrip')?.touched
+                "
+              >
+                <span>La descripción <strong>es obligatoria</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <select
+                class="form-select form-select-lg"
+                formControlName="route"
+              >
+                <option *ngFor="let route of routes" value="{{ route._id }}">
+                  {{ route.descrip }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  planeForm.get('route')?.hasError('required') &&
+                  planeForm.get('route')?.touched
+                "
+              >
+                <span>La ruta <strong>es obligatoria</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <select
+                class="form-select form-select-lg"
+                formControlName="schedule"
+              >
+                <option
+                  *ngFor="let schedule of schedules"
+                  value="{{ schedule._id }}"
+                >
+                  {{ schedule.day | date }}, 
+                  Hora: {{ schedule.arrivedhour }},
+                  Precio: {{ schedule.price | currency: "USD":"$":"1.0-2" }}
+                </option>
+              </select>
+
+              <div
+                class="text-danger"
+                *ngIf="
+                  planeForm.get('schedule')?.hasError('required') &&
+                  planeForm.get('schedule')?.touched
+                "
+              >
+                <span>El horario <strong>es obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <select
+              class="form-select form-select-lg"
+              formControlName="planetype"
+            >
+              <option
+                *ngFor="let planetype of planeTypes"
+                value="{{ planetype._id }}"
+              >
+                {{ planetype.model}}
+              </option>
+            </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  planeForm.get('planetype')?.hasError('required') &&
+                  planeForm.get('planetype')?.touched
+                "
+              >
+                <span>El tipo de avión <strong>es obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button
+                routerLink="/list-plane"
+                class="btn btn-secondary btn-lg float-start"
+              >
+                VOLVER
+              </button>
+              <button
+                type="submit"
+                [disabled]="planeForm.invalid"
+                class="btn btn-success btn-lg float-end"
+              >
+                ACEPTAR
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

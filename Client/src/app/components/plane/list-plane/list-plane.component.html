@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Aviones</span>
+                    <button class="btn btn-success float-end" routerLink="/create-plane">NUEVO</button>
+                    <table *ngIf="planes.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Ruta</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col">Tipo de avión</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let plane of planes">
+                            <td>{{plane.descrip}}</td>
+                            <td>{{plane.route.descrip}}</td>
+                            <td> {{ plane.schedule.day | date }}, 
+                              Hora: {{ plane.schedule.arrivedhour }},
+                              Precio: {{ plane.schedule.price | currency: "USD":"$":"1.0-2" }}</td>
+                            <td>Modelo: {{plane.planetype.model}} Marca: {{plane.planetype.brand}} Año: {{plane.planetype.year}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-plane', plane._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deletePlane(plane._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="planes.length == 0">No hay aviones para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

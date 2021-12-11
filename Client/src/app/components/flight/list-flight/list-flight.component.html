@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Vuelos</span>
+                    <button class="btn btn-success float-end" routerLink="/create-flight">NUEVO</button>
+                    <table *ngIf="flights.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Avión</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let flight of flights">
+                            <td>{{flight.date | date}}</td>
+                            <td>{{flight.plane.descrip}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-flight', flight._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deleteFlight(flight._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="flights.length == 0">No hay vuelos para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

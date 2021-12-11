@@ -1,0 +1,66 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="booking/reservation"
+      >Reserva</a
+    >
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Ida</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Regreso</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled"
+      >Proceso de compra</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active"
+      tabindex="-1"
+      aria-disabled="true"
+      >Check-in</a
+    >
+  </li>
+</ul>
+<div class="avion">
+  <h1 class="mt-3">Vuelo Ida</h1>
+  <img class="img-fluid" src="../../../../assets/avion.png" alt="" />
+  <div class="seats" *ngFor="let butaca of butacas">
+    <a (click)="pintarSeleccionado1(butaca)"
+      ><i
+        style="cursor: pointer;"
+        [ngClass]="{
+          libre: butaca.charAt(2) === 'f',
+          ocupado: butaca.charAt(2) === 'v',
+          seleccionado: butaca.charAt(2) === 's'
+        }"
+        class="fas fa-square icono libre fila{{ butaca.charAt(0) }} asiento{{
+          butaca.charAt(1)
+        }}"
+      ></i>
+    </a>
+  </div>
+</div>
+<div class="avion2" [ngClass]="{pl2: flightId2 == '0'}">
+  <h1 class="mt-3">Vuelo Regreso</h1>
+  <img class="img-fluid" src="../../../../assets/avion.png" alt="" />
+  <div class="seats" *ngFor="let butaca of butacas2">
+    <a (click)="pintarSeleccionado2(butaca)"
+      ><i
+        style="cursor: pointer;"
+        [ngClass]="{
+          libre: butaca.charAt(2) === 'f',
+          ocupado: butaca.charAt(2) === 'v',
+          seleccionado: butaca.charAt(2) === 's'
+        }"
+        class="fas fa-square icono libre fila{{ butaca.charAt(0) }}b asiento{{
+          butaca.charAt(1)
+        }}"
+      ></i>
+    </a>
+  </div>
+</div>
+
+<a class="btn btn-success btn-lg" (click)="guardarReserva1()">Guardar</a>

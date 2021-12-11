@@ -1,0 +1,70 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a style="font-size: 22px;"><em class="fas fa-globe-americas"></em>Skyway</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 50px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink=""><em class="fas fa-home"></em> Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="booking/reservation"><em class="fas fa-plane"></em> Próximos Vuelos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="about-info"><em class="fas fa-address-card"></em> Acerca de</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="report"><em class="fas fa-file-alt"></em>Reportes</a>
+              </li>
+              <li class="nav-item dropdown" *ngIf="isLoggedIn">
+
+              <li class="nav-item dropdown" *ngIf="isLoggedIn && roles=='admin' ">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <em class="fas fa-cogs"></em> Administración
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="list-route"><em class="fas fa-road"></em> Rutas</a></li>
+                  <li><a class="dropdown-item" routerLink="list-schedule"><em class="fas fa-calendar-alt"></em> Horarios</a></li>
+                  <li><a class="dropdown-item" routerLink="list-planeType"><em class="fas fa-sitemap"></em> Tipo de aviones</a></li>
+                  <li><a class="dropdown-item" routerLink="list-plane"><em class="fas fa-plane"></em> Aviones</a></li>
+                  <li><a class="dropdown-item" routerLink="list-flight"><em class="fas fa-plane-departure"></em> Vuelos</a></li>
+                  <li><a class="dropdown-item" routerLink="list-user"><em class="fas fa-users"></em> Usuarios</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <a class="nav-link" style="margin-right: 10px;" routerLink="signin-user" *ngIf="!isLoggedIn">Iniciar Sesión</a>
+              <a class="btn btn-outline-dark" routerLink="signup-user"  *ngIf="!isLoggedIn">Registrarse</a>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+
+                <li class="dropdown" *ngIf="isLoggedIn" style="margin-right: 50px;">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px;">
+                    <em  class="far fa-user-circle"></em> {{username}}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a [routerLink]="['/account', userLogin]" class="dropdown-item" ><em class="fas fa-user-alt"></em> Cuenta</a></li>
+                    <li><a [routerLink]="['/purchases', userLogin]" class="dropdown-item" ><em class="fas fa-history"></em> Historial</a></li>
+                    <li><a style="cursor: pointer;" class="dropdown-item" (click)="logout()"><em class="fas fa-sign-out-alt"></em> Cerrar sesión</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+  <div class="container mt-3">
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+    <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+    <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+    <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+    <router-outlet></router-outlet>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+    <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  </div>
+  <app-footer></app-footer>
+</div>

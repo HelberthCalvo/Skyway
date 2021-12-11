@@ -1,0 +1,80 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="booking/reservation"
+      >Reserva</a
+    >
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Ida</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Regreso</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active"
+      >Proceso de compra</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link disabled"
+      tabindex="-1"
+      aria-disabled="true"
+      >Check-in</a
+    >
+  </li>
+</ul>
+<br />
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card-body text-center float-end">
+        <form>
+          <div class="mb-3">
+            <h5>Subtotal: {{ subtotal | currency: "USD":"$":"1.0-2" }}</h5>
+            <h5>Impuesto: {{ impuesto | currency: "USD":"$":"1.0-2" }}</h5>
+            <h5>Total: {{ total | currency: "USD":"$":"1.0-2" }}</h5>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <div class="card-body text-center">
+          <form class="mt-3">
+            <div class="mb-3">
+              <img
+                style="height: 90px"
+                class="img-fluid"
+                src="../../../../assets/paypal.png"
+                alt=""
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Correo Electrónico"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Contraseña"
+              />
+            </div>
+            <div class="mb-3">
+              <button (click)="cancelar()" class="btn btn-danger btn-lg">
+                Cancelar Compra
+              </button>
+              <button (click)="goCheckIn()" class="btn btn-lg btn-success mt-2">
+                <i class="fab fa-paypal"></i>
+                Pagar con PayPal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

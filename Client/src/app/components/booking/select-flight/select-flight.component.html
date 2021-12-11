@@ -1,0 +1,53 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item ">
+    <a
+      class="nav-link"
+      aria-current="page"
+      routerLink="booking/reservation"
+      >Reserva</a
+    >
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active">Ida</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Regreso</a>
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link disabled"
+      >Proceso de compra</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link disabled"
+      tabindex="-1"
+      aria-disabled="true"
+      >Check-in</a
+    >
+  </li>
+</ul>
+
+<table *ngIf="flights.length>0" class="table mt-3">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Día</th>
+      <th scope="col">Hora de Llegada</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Ruta</th>
+      <th scope="col">Duración</th>
+      <th scope="col">Comprar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of flights">
+      <td>{{ flight.plane.schedule.day | date }}</td>
+      <td>{{ flight.plane.schedule.arrivedhour }}</td>
+      <td>{{ flight.plane.schedule.price | currency: "USD":"$":"1.0-2" }}</td>
+      <td>{{flight.plane.route.descrip}}</td>
+      <td>{{flight.plane.route.duration}} horas</td>
+      <td><a style="cursor: pointer; color: blue;" (click)="vuelo2(flight._id)"><i  class="far fa-credit-card"></i></a></td>
+    </tr>
+  </tbody>
+</table>

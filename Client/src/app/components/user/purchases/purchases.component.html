@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">Historial de Compras</span>
+            <table *ngIf="bookings.length>0" class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Asientos</th>
+                    <th scope="col">Cantidad de Pasajeros</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Impuestos</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings">
+                    <td>{{booking.flight.date| date}}</td>
+                    <td>{{booking.seat}}</td>
+                    <td>{{booking.qtypassengers}}</td>
+                    <td>{{booking.subtotal| currency: "USD":"$":"1.0-2"}}</td>
+                    <td>{{booking.tax | currency: "USD":"$":"1.0-2"}}</td>
+                    <td>{{booking.total | currency: "USD":"$":"1.0-2"}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+

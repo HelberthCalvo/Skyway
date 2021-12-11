@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Horarios</span>
+                    <button class="btn btn-success float-end" routerLink="/create-schedule">NUEVO</button>
+                    <table *ngIf="schedules.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Día</th>
+                            <th scope="col">Hora de llegada</th>
+                            <th scope="col">Precio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let schedule of schedules">
+                            <td>{{schedule.day | date}}</td>
+                            <td>{{schedule.arrivedhour}}</td>
+                            <td>{{schedule.price | currency: "USD":"$":"1.0-2"}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-schedule', schedule._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deleteSchedule(schedule._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="schedules.length == 0">No hay horarios para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

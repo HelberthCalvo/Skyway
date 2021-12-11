@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Usuarios</span>
+                    <table *ngIf="users.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre de Usuario</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Fecha de Nacimiento</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Télefono de trabajo</th>
+                            <th scope="col">Celular</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let user of users">
+                            <td>{{user.username}}</td>
+                            <td>{{user.role}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.lastname}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.birthday | date}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.workphone}}</td>
+                            <td>{{user.mobile}}</td>
+                            <td>
+                                <i [routerLink]="['/edit-user', user._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deleteUser(user._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="users.length == 0">No hay usuarios para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

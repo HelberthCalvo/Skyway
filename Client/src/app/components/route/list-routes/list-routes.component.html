@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Listado de Rutas</span>
+                    <button class="btn btn-success float-end" routerLink="/create-route">NUEVO</button>
+                    <table *ngIf="routes.length>0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Duración</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let route of routes">
+                            <td>{{route.descrip}}</td>
+                            <td>{{route.duration}} hrs</td>
+                            <td>
+                                <i [routerLink]="['/edit-route', route._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="deleteRoute(route._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5  style="text-align: start; margin-top: 10px;" *ngIf="routes.length == 0">No hay rutas para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12 ">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">Listado de clientes por avión</span>
+            <table *ngIf="bookings.length>0" class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Asientos</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Avión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings">
+                    <td>{{booking.seat}}</td>
+                    <td>{{booking.user.name}} {{booking.user.lastname}}</td>
+                    <td>{{booking.flight.plane.descrip}} </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

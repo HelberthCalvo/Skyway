@@ -1,0 +1,101 @@
+.avion {
+  width: 50%;
+  margin: auto;
+}
+
+.avion img {
+  position: relative;
+  z-index: 1;
+}
+
+.avion2 {
+  width: 50%;
+  margin: auto;
+}
+
+
+.avion2 img {
+  position: relative;
+  z-index: 1;
+}
+
+.pl2{
+  display: none;
+}
+
+.iconosVuelo1 {
+  top: 200em;
+}
+
+.icono {
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+}
+
+.fila0 {
+  top: 23.5em;
+}
+.fila1 {
+  top: 25em;
+}
+.fila2 {
+  top: 26.5em;
+}
+.fila3 {
+  top: 28em;
+}
+.fila4 {
+  top: 29.5em;
+}
+.asiento0 {
+  left: 36.5em;
+}
+.asiento1 {
+  left: 38em;
+}
+.asiento2 {
+  left: 40.5em;
+}
+.asiento3 {
+  left: 42em;
+}
+
+.fila0b {
+  top:66.5em;
+}
+.fila1b {
+  top: 68em;
+}
+.fila2b {
+  top: 69.5em;
+}
+.fila3b {
+  top: 71em;
+}
+.fila4b {
+  top: 72.58em;
+}
+.asiento0 {
+  left: 36.5em;
+}
+.asiento1 {
+  left: 38em;
+}
+.asiento2 {
+  left: 40.5em;
+}
+.asiento3 {
+  left: 42em;
+}
+
+.seleccionado {
+  color: green;
+}
+.ocupado {
+  color: red;
+}
+
+.libre {
+  color: gray;
+}

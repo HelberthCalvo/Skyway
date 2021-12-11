@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{ titulo }}</span>
+                    <form class="mt-3" [formGroup]="routeForm" (ngSubmit)="addRoute()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="descrip" class="form-control form-control-lg"
+                                placeholder="Descripción de la ruta">
+                            <div class="text-danger" *ngIf="routeForm.get('descrip')?.hasError('required') && routeForm.get('descrip')?.touched">
+                                <span>La descripción de la ruta <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="duration" class="form-control form-control-lg"
+                                placeholder="Duración de la ruta">
+                            <div class="text-danger" *ngIf="routeForm.get('duration')?.hasError('required') && routeForm.get('duration')?.touched">
+                                <span>La duración <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/list-route" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="routeForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

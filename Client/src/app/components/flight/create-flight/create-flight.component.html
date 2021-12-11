@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">{{ titulo }}</span>
+          <form class="mt-3" [formGroup]="flightForm" (ngSubmit)="addFlight()">
+            <div class="mb-3">
+              <input
+                type="date"
+                formControlName="date"
+                class="form-control form-control-lg"
+                placeholder="Fecha de salida"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  flightForm.get('date')?.hasError('required') &&
+                  flightForm.get('date')?.touched
+                "
+              >
+                <span>La fecha<strong>es obligatoria</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+                <select
+                class="form-select form-select-lg"
+                formControlName="plane"
+              >
+                <option
+                  *ngFor="let plane of planes"
+                  value="{{ plane._id }}"
+                >
+                  {{ plane.descrip }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  flightForm.get('plane')?.hasError('required') &&
+                  flightForm.get('plane')?.touched
+                "
+              >
+                <span>El avión <strong>es obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button
+                routerLink="/list-flight"
+                class="btn btn-secondary btn-lg float-start"
+              >
+                VOLVER
+              </button>
+              <button
+                type="submit"
+                [disabled]="flightForm.invalid"
+                class="btn btn-success btn-lg float-end"
+              >
+                ACEPTAR
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
